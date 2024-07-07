@@ -1,0 +1,19 @@
+[Unit]
+Description=TGTG bot for food notifications
+
+[Container]
+ContainerName=tgtg-bot
+Environment=SLEEP_TIME=60 NTFY=true NTFY_SERVER=https://ntfy.sh SCHEDULE_CRON="* 6-23 * * *"
+Image=docker.io/derhenning/tgtg:latest-alpine
+Network=pasta
+Secret=ntfy_topic,type=env,target=NTFY_TOPIC tgtg_username,type=env,target=TGTG_USERNAME
+Volume=tgtg-token.volume:/tokens
+Volume=/etc/localtime:/etc/localtime:ro
+Volume=/etc/timezone:/etc/timezone:ro
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
+

@@ -1,0 +1,19 @@
+[Unit]
+Description=Simple ip service to let people now their ip
+Requires=traefik.service
+After=traefik.service
+
+[Container]
+ContainerName=ip-simple-service
+ExposeHostPort=5000/tcp
+PublishPort=127.0.0.1:5000:5000/tcp
+Image=localhost/hanneshil/whoami:latest
+Label=traefik.enable=true traefik.http.routers.ipKnower.rule=Host(`ip.hsht.de`) traefik.http.routers.ipKnower.entrypoints=websecure traefik.http.routers.ipKnower.tls.certresolver=hshtresolver traefik.http.services.ipKnower.loadbalancer.server.port=5000
+Network=pasta
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
+

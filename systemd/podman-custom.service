@@ -1,0 +1,16 @@
+[Unit]
+Description=Podman API Service
+Requires=podman-custom.socket
+After=podman-custom.socket
+Documentation=man:podman-system-service(1)
+StartLimitIntervalSec=0
+
+[Service]
+Delegate=true
+Type=exec
+KillMode=process
+Environment=LOGGING="--log-level=info"
+ExecStart=/usr/local/bin/podman-custom $LOGGING system service
+
+[Install]
+WantedBy=default.target

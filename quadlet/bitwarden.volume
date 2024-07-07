@@ -1,0 +1,6 @@
+[Unit]
+Description=Bitwarden stored data
+
+[Volume]
+Label=app=bitwarden
+

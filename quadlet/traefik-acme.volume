@@ -1,0 +1,6 @@
+[Unit]
+Description=Traefik acme store
+
+[Volume]
+Label=app=traefik
+

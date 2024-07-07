@@ -1,0 +1,6 @@
+[Unit]
+Description=TGTG bot token store
+
+[Volume]
+Label=app=tgtg-bot
+
