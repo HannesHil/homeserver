@@ -5,7 +5,7 @@ Requires=podman-custom.service
 [Container]
 ContainerName=traefik
 Exec='--log.level=DEBUG' '--accesslog=true' '--api.dashboard=true' '--providers.docker=true' '--providers.docker.useBindPortIP=false' '--providers.docker.exposedbydefault=false' '--entrypoints.webunsecure.address=:80' '--entrypoints.websecure.address=:443' '--certificatesresolvers.hshtresolver.acme.tlschallenge=true' '--entrypoints.webunsecure.http.redirections.entryPoint.to=websecure' '--certificatesresolvers.hshtresolver.acme.email=postmaster@hsht.de' '--certificatesresolvers.hshtresolver.acme.storage=/letsencrypt/acme.json'
-Image=docker.io/library/traefik:v2.11
+Image=docker.io/library/traefik:v3.1
 Label=traefik.enable=true traefik.http.routers.api.rule=Host(`traefik.hsht.de`) traefik.http.routers.api.entrypoints=websecure traefik.http.routers.api.tls.certresolver=hshtresolver traefik.http.routers.api.middlewares=https-only,internip traefik.http.routers.api.service=api@internal "traefik.http.middlewares.internip.ipwhitelist.sourcerange=127.0.0.1/32, 172.16.0.0/12" traefik.http.middlewares.https-only.redirectscheme.scheme=https
 Network=pasta:-T,5000-5100
 PublishPort=80:80
