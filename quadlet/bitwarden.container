@@ -7,7 +7,7 @@ ContainerName=bitwarden
 Environment=WEBSOCKET_ENABLED=true SIGNUPS_ALLOWED=false DOMAIN=https://pwd.hsht.de
 ExposeHostPort=80
 PublishPort=127.0.0.1:5001:80/tcp
-Image=docker.io/vaultwarden/server:1.32.0
+Image=docker.io/vaultwarden/server:1.32.2
 Label=traefik.enable=true traefik.http.routers.bitwarden.rule=Host(`pwd.hsht.de`) traefik.http.routers.bitwarden.entrypoints=websecure traefik.http.routers.bitwarden.tls.certresolver=hshtresolver traefik.http.services.bitwarden.loadbalancer.server.port=5001
 Network=pasta
 Secret=bitwarden_admin_pwd2,type=env,target=ADMIN_TOKEN
