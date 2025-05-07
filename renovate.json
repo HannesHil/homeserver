@@ -6,8 +6,12 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": [".container$"],
-      "matchStrings": ["Image=(?<depName>.*?):(?<currentValue>.*?)\\n"],
+      "managerFilePatterns": [
+        "/.container$/"
+      ],
+      "matchStrings": [
+        "Image=(?<depName>.*?):(?<currentValue>.*?)\\n"
+      ],
       "datasourceTemplate": "docker"
     }
   ]
